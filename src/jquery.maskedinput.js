@@ -201,6 +201,10 @@ $.fn.extend({
 			function androidInputEvent(e) {
 				var curVal = input.val();
 				var pos = input.caret();
+				if (pos === undefined) {
+					// Element has lost focus or was detached from DOM
+					return;
+				}
 				if (oldVal && oldVal.length && oldVal.length > curVal.length ) {
 					// a deletion or backspace happened
 					checkVal(true);
